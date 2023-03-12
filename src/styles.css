@@ -62,6 +62,9 @@ strong {
 i {
   font-size: 30px;
 }
+#description {
+  text-transform: capitalize;
+}
 .units {
   font-size: 20px;
   display: inline-block;

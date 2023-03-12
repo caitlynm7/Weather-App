@@ -42,8 +42,17 @@ let cityForm = document.querySelector("form");
 cityForm.addEventListener("submit", changeCity);
 
 function currentWeather(response) {
+  console.log(response.data);
   let cityInput = cityForm.querySelector("#city-input");
   cityInput.innerHTML = response.data.name;
   let currentTemp = document.querySelector(".current-temp");
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}ºF`;
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `Feels Like: ${Math.round(
+    response.data.main.feels_like
+  )}ºF`;
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}MPH`;
+  let description = document.querySelector("#description");
+  description.innerHTML = response.data.weather[0].description;
 }
