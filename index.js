@@ -55,4 +55,8 @@ function currentWeather(response) {
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}MPH`;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
+  let currentLow = document.querySelector(".current-low");
+  currentLow.innerHTML = `${Math.round(response.data.main.temp_min)}ºF /`;
+  let currentHigh = document.querySelector(".current-high");
+  currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)} ºF`;
 }

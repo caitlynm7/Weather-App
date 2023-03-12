@@ -65,11 +65,11 @@ i {
 #description {
   text-transform: capitalize;
 }
-.units {
-  font-size: 20px;
-  display: inline-block;
-  font-weight: 200;
+.current-low,
+.current-high {
+  font-size: 15px;
 }
+
 .weather {
   display: block;
   border-style: none;
@@ -92,7 +92,7 @@ i {
   font-weight: 400;
 }
 
-.stats .current-temp {
+.stats .col-3 {
   border-style: none;
   border-radius: 20px;
   color: #fff;
