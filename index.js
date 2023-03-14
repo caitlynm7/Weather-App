@@ -59,4 +59,10 @@ function currentWeather(response) {
   currentLow.innerHTML = `${Math.round(response.data.main.temp_min)}ºF /`;
   let currentHigh = document.querySelector(".current-high");
   currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)} ºF`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }

@@ -62,7 +62,8 @@ strong {
 i {
   font-size: 30px;
 }
-#description {
+#description,
+#current-city {
   text-transform: capitalize;
 }
 .current-low,
