@@ -45,8 +45,8 @@ function currentWeather(response) {
   console.log(response.data);
   let cityInput = cityForm.querySelector("#city-input");
   cityInput.innerHTML = response.data.name;
-  let currentTemp = document.querySelector(".current-temp");
-  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}ºF`;
+  let currentTemp = document.querySelector("#fahrenheight-temp");
+  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
   let feelsLike = document.querySelector("#feels-like");
   feelsLike.innerHTML = `Feels Like: ${Math.round(
     response.data.main.feels_like
@@ -58,11 +58,41 @@ function currentWeather(response) {
   let currentLow = document.querySelector(".current-low");
   currentLow.innerHTML = `${Math.round(response.data.main.temp_min)}ºF /`;
   let currentHigh = document.querySelector(".current-high");
-  currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)} ºF`;
+  currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)}`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  fahrenheightTemp = response.data.main.temp;
 }
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((fahrenheightTemp - 32) * 5) / 9;
+  //remove the active class the fahrenheight link
+  fahrenheightLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let currentTemp = document.querySelector("#fahrenheight-temp");
+  currentTemp.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayFahrenheightTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#fahrenheight-temp");
+  fahrenheightLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  currentTemp.innerHTML = Math.round(fahrenheightTemp);
+}
+
+let fahrenheightTemp = null;
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let fahrenheightLink = document.querySelector("#fahrenheight-link");
+fahrenheightLink.addEventListener("click", displayFahrenheightTemp);
+
+search("New York");

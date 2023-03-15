@@ -29,6 +29,7 @@ button {
   border-style: none;
   padding: 10px 20px;
   line-height: 20px;
+  margin-top: 10px;
   background: linear-gradient(
     109.5deg,
     rgb(72, 203, 217) 11.2%,
@@ -69,6 +70,12 @@ i {
 .current-low,
 .current-high {
   font-size: 15px;
+}
+
+div span.temp-unit {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px;
 }
 
 .weather {
@@ -112,4 +119,14 @@ i {
 }
 .current-temp .fa-cloud-sun-rain {
   font-size: 50px;
+}
+
+.current-temp .temp-unit .active {
+  color: white;
+  cursor: default;
+  text-decoration: none;
+}
+
+.current-temp .temp-unit .active:hover {
+  text-decoration: none;
 }
