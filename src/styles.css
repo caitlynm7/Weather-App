@@ -60,22 +60,16 @@ footer {
 strong {
   font-weight: 600;
 }
-i {
-  font-size: 30px;
-}
-#description,
-#current-city {
-  text-transform: capitalize;
-}
-.current-low,
-.current-high {
-  font-size: 15px;
-}
 
 div span.temp-unit {
   font-size: 15px;
   font-weight: 600;
   padding: 10px;
+}
+
+.current-low,
+.current-high {
+  font-size: 15px;
 }
 
 .weather {
@@ -129,4 +123,15 @@ div span.temp-unit {
 
 .current-temp .temp-unit .active:hover {
   text-decoration: none;
+}
+#description,
+#current-city {
+  text-transform: capitalize;
+}
+.weather-forecast-temp {
+  font-size: 15px;
+  font-weight: 400;
+}
+.weather-forecast-temp-min {
+  opacity: 0.5;
 }
