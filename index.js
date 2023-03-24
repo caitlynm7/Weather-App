@@ -37,10 +37,11 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
       <div class="col-2">
         <div class="weather-forecast-date">${formatDay(forecastDay.dt)}
         </div>
@@ -52,15 +53,16 @@ function displayForecast(response) {
           width="36"
         />
         <div class="weather-forecast-temp">
-          <span class="weather-forecast-temp-min">${
+          <span class="weather-forecast-temp-min">${Math.round(
             forecastDay.temp.min
-          }º</span>
-          <span class="weather-forecast-temp-max">${
+          )}º</span>
+          <span class="weather-forecast-temp-max">${Math.round(
             forecastDay.temp.max
-          }º</span>
+          )}º</span>
         </div>
       </div>
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -146,3 +148,5 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 let fahrenheightLink = document.querySelector("#fahrenheight-link");
 fahrenheightLink.addEventListener("click", displayFahrenheightTemp);
+
+searchCity("New York");
