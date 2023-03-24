@@ -22,7 +22,8 @@ if (minutes < 10) {
 
 h2.innerHTML = `${day}, ${hour}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -48,7 +49,6 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 function changeCity(event) {
@@ -67,6 +67,14 @@ function searchCity(city) {
 
 let cityForm = document.querySelector("form");
 cityForm.addEventListener("submit", changeCity);
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function currentWeather(response) {
   console.log(response.data);
@@ -94,6 +102,8 @@ function currentWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   fahrenheightTemp = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 function displayCelsiusTemp(event) {
@@ -121,5 +131,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 let fahrenheightLink = document.querySelector("#fahrenheight-link");
 fahrenheightLink.addEventListener("click", displayFahrenheightTemp);
-
-displayForecast();
