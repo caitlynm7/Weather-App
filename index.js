@@ -110,7 +110,7 @@ function currentWeather(response) {
   let currentLow = document.querySelector(".current-low");
   currentLow.innerHTML = `${Math.round(response.data.main.temp_min)}ºF /`;
   let currentHigh = document.querySelector(".current-high");
-  currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)}`;
+  currentHigh.innerHTML = ` ${Math.round(response.data.main.temp_max)}ºF`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
