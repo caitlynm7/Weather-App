@@ -22,7 +22,34 @@ if (minutes < 10) {
 
 h2.innerHTML = `${day}, ${hour}:${minutes}`;
 
-//search engine
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}
+        </div>
+        <img
+          src="https://source.unsplash.com/36x36/?weather"
+          alt="Weather icon"
+          width="36"
+        />
+        <div class="weather-forecast-temp">
+          <span class="weather-forecast-temp-min">15º</span>
+          <span class="weather-forecast-temp-max">26º</span>
+        </div>
+      </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 
 function changeCity(event) {
   event.preventDefault();
@@ -95,4 +122,4 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let fahrenheightLink = document.querySelector("#fahrenheight-link");
 fahrenheightLink.addEventListener("click", displayFahrenheightTemp);
 
-search("New York");
+displayForecast();
