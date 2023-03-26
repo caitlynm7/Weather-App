@@ -123,30 +123,4 @@ function currentWeather(response) {
   getForecast(response.data.coord);
 }
 
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  let celsiusTemperature = ((fahrenheightTemp - 32) * 5) / 9;
-  //remove the active class the fahrenheight link
-  fahrenheightLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  let currentTemp = document.querySelector("#fahrenheight-temp");
-  currentTemp.innerHTML = Math.round(celsiusTemperature);
-}
-
-function displayFahrenheightTemp(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#fahrenheight-temp");
-  fahrenheightLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  currentTemp.innerHTML = Math.round(fahrenheightTemp);
-}
-
-let fahrenheightTemp = null;
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
-
-let fahrenheightLink = document.querySelector("#fahrenheight-link");
-fahrenheightLink.addEventListener("click", displayFahrenheightTemp);
-
-searchCity("New York");
+search("New York");
