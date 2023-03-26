@@ -129,25 +129,5 @@ function currentWeather(response) {
   getForecast(response.data.coord);
 }
 
-//Current Location Button
-
-function currentLocationForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "34ae1065362d42545661451bda2b8a1f";
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${coordinates.coords.latitude}&lon=${coordinates.coords.longitude}&limit=1&appid=${apiKey}`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(displayForecast);
-}
-
-function getCurrentPosition() {
-  navigator.geolocation.getCurrentPosition(currentLocationForecast);
-}
-
-let currentLocationButton = document.querySelector(".current-button");
-currentLocationButton.addEventListener("click", getCurrentPosition);
-
-//Default Load
-
 searchCity("Kansas City");
-
 displayForecast();
