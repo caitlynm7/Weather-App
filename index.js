@@ -1,3 +1,5 @@
+// Current Date & Time
+
 let now = new Date();
 
 let h2 = document.querySelector("#time");
@@ -30,6 +32,8 @@ function formatDay(timestamp) {
   return days[day];
 }
 
+//display week forecast
+
 function displayForecast(response) {
   console.log(response.data.daily);
   let forecast = response.data.daily;
@@ -50,7 +54,7 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="36"
+          width="50"
         />
         <div class="weather-forecast-temp">
           <span class="weather-forecast-temp-min">${Math.round(
@@ -67,6 +71,8 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
+//Search & Change City Data
 
 function changeCity(event) {
   event.preventDefault();
@@ -123,4 +129,25 @@ function currentWeather(response) {
   getForecast(response.data.coord);
 }
 
-search("New York");
+//Current Location Button
+
+function currentLocationForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
+  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${coordinates.coords.latitude}&lon=${coordinates.coords.longitude}&limit=1&appid=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(currentLocationForecast);
+}
+
+let currentLocationButton = document.querySelector(".current-button");
+currentLocationButton.addEventListener("click", getCurrentPosition);
+
+//Default Load
+
+searchCity("Kansas City");
+
+displayForecast();
