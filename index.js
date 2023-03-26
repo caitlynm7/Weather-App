@@ -60,7 +60,7 @@ function displayForecast(response) {
             forecastDay.temp.max
           )}º</span>
         </div>
-      </div>
+      
     </div>`;
     }
   });
