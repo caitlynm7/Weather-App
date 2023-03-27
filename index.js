@@ -28,9 +28,6 @@ function formatDate(timestamp) {
 let h2 = document.querySelector("#time");
 h2.innerHTML = formatDate(new Date());
 
-let h2 = document.querySelector("#time");
-h2.innerHTML = formatDate(response.data.dt * 1000);
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
