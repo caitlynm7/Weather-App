@@ -35,7 +35,6 @@ function formatDay(timestamp) {
 
   return days[day];
 }
-
 //display week forecast
 
 function displayForecast(response) {
@@ -127,7 +126,8 @@ function currentWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-
+  let h2 = document.querySelector("#time");
+  h2.innerHTML = formatDate(response.data.dt * 1000);
   fahrenheightTemp = response.data.main.temp;
 
   getForecast(response.data.coord);
