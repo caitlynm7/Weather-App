@@ -1,28 +1,35 @@
 // Current Date & Time
 
-let now = new Date();
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[new Date().getDay()];
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day}, ${hour}:${minutes}`;
+}
 
 let h2 = document.querySelector("#time");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[new Date().getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
+h2.innerHTML = formatDate(new Date());
 
-h2.innerHTML = `${day}, ${hour}:${minutes}`;
+let h2 = document.querySelector("#time");
+h2.innerHTML = formatDate(response.data.dt * 1000);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -130,4 +137,3 @@ function currentWeather(response) {
 }
 
 searchCity("Kansas City");
-displayForecast();
